@@ -71,6 +71,15 @@ if (Auth::user()) {   // Check is user logged in
             <li><a href="{!! asset('logout') !!}">Logout</a></li>
           @elseif($view == 'student' || $view == 'teacher')
             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions<i class="fa fa-angle-down"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ route('questions.create') }}">Add New </a></li>
+                <li><a href="{{ route('questions.index') }}">All Questions</a></li>
+                <li><a href="{!! asset('view-subjects') !!}">Subjects</a></li>
+                <li><a href="{!! asset('view-corse') !!}">Course Out Lines</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">LMS<i class="fa fa-angle-down"></i></a>
               <ul class="dropdown-menu">
                 <li><a href="{!! asset('view-teachers') !!}">Teachers</a></li>

@@ -116,6 +116,9 @@ Route::post('store-student-subject','studentSubjectsController@store');
 Route::get('show-student-subject/{st_id}','studentSubjectsController@show');
 Route::get('delete-student-subject/{id}','studentSubjectsController@destroy');
 
+// Questions Routes
+Route::resource('questions', 'QuestionController');
+
 
 Route::get('bcrypt','studentSubjectsController@custom_data');
 

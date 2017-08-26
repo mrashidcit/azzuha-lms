@@ -4,6 +4,7 @@
 @yield('head')
 <body>
   @yield('header')
+
   <section id="about-us">
     <div class="container">
       <div class="center wow fadeInDown">
