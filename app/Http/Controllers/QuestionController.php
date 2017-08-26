@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use App\subject;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -13,8 +15,13 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        $subjects = subject::all();
+        $questions = Question::paginate(3);
 
-        return view('question.index');
+        return view('question.index', [
+            'subjects' => $subjects,
+            'questions' => $questions
+        ]);
     }
 
     /**
@@ -24,8 +31,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
+        $subjects = subject::all();
 
-        return view('question.create');
+        return view('question.create', ['subjects' => $subjects]);
     }
 
     /**
@@ -36,7 +44,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $question = new Question();
+
+        $question->store($request);
+
+        return redirect()->route('questions.create')->with('status', 'Successfully Saved!');
+
+
     }
 
     /**

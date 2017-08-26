@@ -7,9 +7,32 @@
 <!-- <span>Add New Course Outline<span> -->
 <section id="contact-page">
     <div class="container">
-        <div class="center">
+        <div >
             <h2 class="custom-heading">List of All Questions</h2>
-            <!-- <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Question</th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($questions as $key=>$question)
+                    <tr>
+                        <th scope="row">{{ ++$key }}</th>
+                        <td>{{ $question->question }}</td>
+                        <td>{{ $question->a }}</td>
+                        <td>{{ $question->b }}</td>
+                        <td></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            {{ $questions->links() }}
         </div>
 
     </div>
