@@ -20,8 +20,14 @@ class QuestionController extends Controller
 
         return view('question.index', [
             'subjects' => $subjects,
-            'questions' => $questions
+            //'questions' => $questions
         ]);
+    }
+
+    public function questionsListBySubjectId(Request $req){
+        $questions = Question::
+                     where('')
+        dd($req->all());
     }
 
     /**

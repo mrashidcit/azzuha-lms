@@ -26,8 +26,8 @@
 
                 <div class="form-group row">
                     <label for="correct_option" class="col-sm-2 col-form-label">Correct Option:</label>
-                    <div class="col-sm-10" required>
-                        <select id="subject_id" name="subject_id" class="custom-select" autofocus>
+                    <div class="col-sm-10" >
+                        <select id="subject_id" required name="subject_id" class="custom-select" autofocus>
                             @foreach($subjects as $subject)
 
                                 <option value="{{ $subject->id }}" >{{ $subject->name }}</option>

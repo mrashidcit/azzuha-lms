@@ -117,6 +117,10 @@ Route::get('show-student-subject/{st_id}','studentSubjectsController@show');
 Route::get('delete-student-subject/{id}','studentSubjectsController@destroy');
 
 // Questions Routes
+Route::get('questions/questions-list', [
+    'uses' => 'QuestionController@questionsListBySubjectId',
+    'as' => 'questions.questionsListBySubjectId'
+]);
 Route::resource('questions', 'QuestionController');
 
 
