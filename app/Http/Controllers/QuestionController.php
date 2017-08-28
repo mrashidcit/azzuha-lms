@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -17,17 +18,32 @@ class QuestionController extends Controller
     {
         $subjects = subject::all();
         $questions = Question::paginate(3);
+        $subject_id = 1; // selecteing first subject in menu by default
 
         return view('question.index', [
             'subjects' => $subjects,
+            'subject_id' => $subject_id,
             //'questions' => $questions
         ]);
     }
 
     public function questionsListBySubjectId(Request $req){
+
+        $subjects = subject::all();
+
         $questions = Question::
-                     where('')
-        dd($req->all());
+            where('subject_id', '=', $req->subject_id)
+            ->get();
+
+        return view('question.index', [
+            'subjects' => $subjects,
+            'questions' => $questions,
+            'subject_id' => $req->subject_id // selected subject id,
+
+        ]);
+
+
+
     }
 
     /**

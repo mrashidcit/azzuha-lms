@@ -19,7 +19,14 @@
                         <select id="subject_id" required name="subject_id" class="custom-select" autofocus>
                             @foreach($subjects as $subject)
 
-                                <option value="{{ $subject->id }}" >{{ $subject->name }}</option>
+                                @if($subject->id == $subject_id)
+                                    <option value="{{ $subject->id }}" selected>{{ $subject->name }}</option>
+
+                                @else
+                                    <option value="{{ $subject->id }}" >{{ $subject->name }}</option>
+                                @endif
+
+
 
                             @endforeach
                         </select>
@@ -37,7 +44,10 @@
                             <th>Question</th>
                             <th>A</th>
                             <th>B</th>
-                            <th>Action</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>Correct_Option</th>
+
                         </tr>
                         </thead>
                         <tbody>
@@ -47,12 +57,15 @@
                                 <td>{{ $question->question }}</td>
                                 <td>{{ $question->a }}</td>
                                 <td>{{ $question->b }}</td>
-                                <td></td>
+                                <td>{{ $question->c }}</td>
+                                <td>{{ $question->d }}</td>
+                                <td>{{ $question->correct_option }}</td>
+
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $questions->links() }}
+
                 </div>
             @endif
 
