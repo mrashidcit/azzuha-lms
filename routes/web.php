@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('main-test', function () {
+    return view('main-test');
+});
+
 Route::get('main', function () {
   return view('index');
 });
@@ -19,6 +23,9 @@ Route::get('', function () {
     return redirect('/login');
 });
 
+Route::get('quiz-test', function () {
+    return view('quiz');
+});
 
 Route::get('dashboard', function () {
   $user = Auth::user();
@@ -87,6 +94,8 @@ Route::post('add-subject','subjectController@store');
 Route::get('edit-subject/{id}','subjectController@edit');
 Route::post('update-subject','subjectController@update');
 Route::get('delete-subject/{id}','subjectController@destroy');
+Route::resource('subjects', 'subjectController');
+
 
 //student sections
 Route::get('create-student','studentController@create');
@@ -122,6 +131,14 @@ Route::get('questions/questions-list', [
     'as' => 'questions.questionsListBySubjectId'
 ]);
 Route::resource('questions', 'QuestionController');
+
+// For Quiz operations
+Route::get('quiz/start-quiz', [
+    'uses' => 'QuizController@start',
+    'as' => 'quiz.start'
+]);
+
+Route::resource('quiz', 'QuizController');
 
 
 Route::get('bcrypt','studentSubjectsController@custom_data');

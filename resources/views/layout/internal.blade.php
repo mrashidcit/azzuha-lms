@@ -79,6 +79,7 @@ if (Auth::user()) {   // Check is user logged in
                 <li><a href="{!! asset('view-corse') !!}">Course Out Lines</a></li>
               </ul>
             </li>
+            <li><a href="{{ route('quiz.index') }}">Quiz</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">LMS<i class="fa fa-angle-down"></i></a>
               <ul class="dropdown-menu">
@@ -100,9 +101,11 @@ if (Auth::user()) {   // Check is user logged in
 @stop
 
 @section('footer')
-  
+    <script src="{{ asset('js/app.js') }}"></script>
   <script src="{!! asset('js/jquery.js') !!}"></script>
+  <!--
   <script type="text/javascript">$(".carousel").carousel();</script>
+  -->
   <script src="{!! asset('js/bootstrap.min.js') !!}"></script>
   <script src="{!! asset('js/jquery.prettyPhoto.js') !!}"></script>
   <script src="{!! asset('js/jquery.isotope.min.js') !!}"></script>
