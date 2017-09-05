@@ -133,7 +133,7 @@ Route::get('questions/questions-list', [
 Route::resource('questions', 'QuestionController');
 
 // For Quiz operations
-Route::get('quiz/start-quiz/{subject-id}', [
+Route::get('quiz/start-quiz/{subject_id}', [
     'uses' => 'QuizController@start',
     'as' => 'quiz.start'
 ]);
