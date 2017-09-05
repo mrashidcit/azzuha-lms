@@ -8,21 +8,8 @@ export default class App extends Component {
     constructor(props){
         super(props)
 
-        this.fetchSubjects = this.fetchSubjects.bind(this);
+
     }
-
-    fetchSubjects() {
-        axios.get('http://localhost:8000/subjects')
-            .then( (response) => {
-                console.log("response" , response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-
-    } // end fetchSubjects()
-
-
 
     render() {
         return (
@@ -43,7 +30,7 @@ ReactDOM.render(
 
     </div>
     ,
-    document.getElementById('app')
+    document.getElementById('app-quiz')
 );
 
 /*

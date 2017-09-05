@@ -20,7 +20,7 @@
         </div>
 
         <div>
-            <form method="get" action="{{ route('quiz.start') }}">
+            <form method="get" action="">
 
                 {{ csrf_field() }}
 
@@ -35,7 +35,7 @@
                             @endforeach
                         </select>
 
-                        <button type="submit" class="btn btn-primary">Start Quiz</button>
+                        <button id="submit" type="submit" class="btn btn-primary">Start Quiz</button>
 
 
                     </div>
@@ -48,7 +48,7 @@
 
             </form>
 
-            <div id="app">
+            <div id="app-quiz">
 
             </div>
         </div>

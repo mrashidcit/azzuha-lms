@@ -45,14 +45,18 @@ class QuizController extends Controller
     }
 
     // Start Quiz of selected Subject
-    public function start(Request $req){
+    public function start($subject_id){
         $questions = Question::
-            where('subject_id', '=', $req->subject_id)
+            where('subject_id', '=', $subject_id)
             ->inRandomOrder()
             ->take(3)
             ->get();
 
-        dd($questions->all());
+        //dd($questions->all());
+
+        return response()->json([
+            'questions' => $questions
+        ]);
 
 
         return view('quiz/quiz');

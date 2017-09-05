@@ -10431,10 +10431,255 @@ var Quiz = function (_Component) {
 
 /***/ }),
 /* 90 */
-/***/ (function(module, __webpack_exports__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: SyntaxError: D:/laravel/lms/resources/assets/js/components/quiz/Subjects.js: Adjacent JSX elements must be wrapped in an enclosing tag (84:12)\n\n\u001b[0m \u001b[90m 82 | \u001b[39m\n \u001b[90m 83 | \u001b[39m            \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mselect\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 84 | \u001b[39m            \u001b[33m<\u001b[39m\u001b[33mList\u001b[39m  \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    | \u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 85 | \u001b[39m        )\u001b[33m;\u001b[39m\n \u001b[90m 86 | \u001b[39m    }\n \u001b[90m 87 | \u001b[39m}\u001b[0m\n");
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Subjects = function (_Component) {
+    _inherits(Subjects, _Component);
+
+    function Subjects() {
+        _classCallCheck(this, Subjects);
+
+        var _this = _possibleConstructorReturn(this, (Subjects.__proto__ || Object.getPrototypeOf(Subjects)).call(this));
+
+        _this.state = {
+            subjects: [],
+            status: false
+        };
+
+        _this.fetchSubjects = _this.fetchSubjects.bind(_this);
+
+        return _this;
+    }
+
+    _createClass(Subjects, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            console.log('Subjects Will Mount');
+            this.fetchSubjects();
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('Subjects Mounted');
+        }
+    }, {
+        key: 'fetchSubjects',
+        value: function fetchSubjects() {
+            var _this2 = this;
+
+            // let previousSubjects = this.state.subjects;
+            var previousSubjects = 'HEllo';
+
+            axios.get('http://localhost:8000/subjects').then(function (response) {
+
+                console.log("response = ", response.data['subjects']);
+
+                previousSubjects = response.data['subjects'];
+
+                console.log('previousSubjects = ' + previousSubjects);
+
+                _this2.setState({
+                    subjects: response.data['subjects'],
+                    status: true
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        } // end fetchSubjects()
+
+
+    }, {
+        key: 'render',
+        value: function render() {
+
+            function Loaded(props) {
+
+                console.log('in Loaded()');
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h1',
+                    null,
+                    'Loaded'
+                );
+            } // end Loaded()
+
+            function Loading(props) {
+                console.log('in Loading()');
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h2',
+                    null,
+                    'Loading'
+                );
+            } // end Loading()
+
+            // Used to show Component on Loading
+
+            var Show = function (_Component2) {
+                _inherits(Show, _Component2);
+
+                function Show(props) {
+                    _classCallCheck(this, Show);
+
+                    return _possibleConstructorReturn(this, (Show.__proto__ || Object.getPrototypeOf(Show)).call(this, props));
+                }
+
+                _createClass(Show, [{
+                    key: 'render',
+                    value: function render() {
+
+                        console.log('status = ' + this.props.status);
+
+                        if (!this.props.status) {
+                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Loading, null);
+                        }
+
+                        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Loaded, null);
+                    }
+                }]);
+
+                return Show;
+            }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'form-group row' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'label',
+                    { className: 'cols-sm-2 col-form-label' },
+                    'Subject:'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'col-sm-10' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Show, { status: this.state.status })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { onClick: this.fetchSubjects },
+                    'Load Subjects'
+                )
+            );
+        }
+    }]);
+
+    return Subjects;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+// return list of given subjects
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Subjects);
+function List(subjects) {
+    var listItems = subjects.map(function (subject) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            subject.id
+        );
+    });
+
+    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'ul',
+        null,
+        listItems
+    );
+};
+
+var SubjectsList = function (_Component3) {
+    _inherits(SubjectsList, _Component3);
+
+    function SubjectsList(props) {
+        _classCallCheck(this, SubjectsList);
+
+        return _possibleConstructorReturn(this, (SubjectsList.__proto__ || Object.getPrototypeOf(SubjectsList)).call(this, props));
+    }
+
+    _createClass(SubjectsList, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            console.log('SubjectsList Mounted = ');
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            if (!this.props.status) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h3',
+                    null,
+                    'Loading...'
+                );
+            }
+
+            return (
+
+                /*
+                <select name="subject" id="subject">
+                  </select>
+                */
+
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(List, { subjects: this.props.subjects })
+            );
+        }
+    }]);
+
+    return SubjectsList;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/*
+class SubjectsList extends Component(props){
+    constructor(props){
+        super(props);
+
+
+    }
+
+    List(props) {
+        if (!props.status){
+
+            return ( <span>Loading....</span> );
+        }
+
+        const subjects = this.props.subjects;
+        const listItems = subjects.map((subject) =>
+            <li>{subject.id}</li>
+        );
+
+
+
+        return (
+
+            <ul name="subject_id"  id="subject_id">
+                {listItems}
+            </ul>
+
+        );
+
+    }
+
+    render() {
+        return (
+            <h3>Subjects</h3>
+
+        );
+    }
+
+
+}
+*/
 
 /***/ }),
 /* 91 */
@@ -41222,24 +41467,10 @@ var App = function (_Component) {
     function App(props) {
         _classCallCheck(this, App);
 
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        _this.fetchSubjects = _this.fetchSubjects.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
     }
 
     _createClass(App, [{
-        key: 'fetchSubjects',
-        value: function fetchSubjects() {
-            axios.get('http://localhost:8000/subjects').then(function (response) {
-                console.log("response", response);
-            }).catch(function (error) {
-                console.log(error);
-            });
-        } // end fetchSubjects()
-
-
-    }, {
         key: 'render',
         value: function render() {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -41260,7 +41491,7 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
     'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(App, null)
-), document.getElementById('app'));
+), document.getElementById('app-quiz'));
 
 /*
 

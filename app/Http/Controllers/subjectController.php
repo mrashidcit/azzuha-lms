@@ -19,7 +19,11 @@ class subjectController extends Controller
   */
   public function index()
   {
-      $subjects = subject::all();
+      $subjects = subject::get();
+
+      //dd($subjects);
+
+      //return compact('subjects');
 
       return response()->json([
           'subjects' => $subjects
