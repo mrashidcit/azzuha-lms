@@ -60,12 +60,12 @@ function show(question){
 $('#save-and-next').click(function(e){
     e.preventDefault();
 
-    $("#myform input[type='radio']:checked").val();
+var element =  $("input[name='option']:checked");
+    
+    console.log(element.val());
 
-    console.log($("input[name='option']").prop('checked').val());
-    if ($("#opt").is(":checked")) {
-        console.log($('#opt').prop('checked').val());
-    }
+    $("input")
+
     console.log('Move next');
     next();
 });
@@ -105,7 +105,7 @@ function hideSubjectMenu(){
     // If we are hiding SubjectMenu
     // then we need to show SubjectInfo.
     showSubjectInfo();
-    showQuizForm();
+    showQuiz();
 
 }
 
@@ -120,8 +120,8 @@ function showSubjectInfo(){
     $('#total-questions').text(questions.length);
 }
 
-function showQuizForm(){
-    $('#quiz-form').show();
+function showQuiz(){
+    $('#quiz').show();
 }
 
 
