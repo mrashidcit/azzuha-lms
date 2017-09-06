@@ -17,7 +17,7 @@ class QuizController extends Controller
     {
         $subjects = subject::all();
 
-        return view('quiz/select-subject',
+        return view('quiz/quiz',
             compact('subjects')
         );
 

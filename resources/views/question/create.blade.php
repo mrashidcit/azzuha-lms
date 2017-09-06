@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('layout.internal')
+<link rel="stylesheet" href="{{ asset('css/question/question.css') }}">
 @yield('head')
 <body>
 @yield('header')
@@ -11,23 +12,29 @@
 
             <h2 class="custom-heading">Add New Questions</h2>
 
+            <!--
             @if (session('status'))
-                <div class="alert alert-success">
+                <div id="success" class="alert alert-success">
                     {{ session('status') }}
                 </div>
-        @endif
+            @endif
+            -->
+            <div id="success" class="alert alert-success">
+                Successfully Saved!
+            </div>
+
             <!-- <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
         </div>
 
         <div>
-            <form method="post" action="{{ route('questions.store') }}">
+            <form id="new-question" method="post" action="{{ route('questions.store') }}">
 
                 {{ csrf_field() }}
 
                 <div class="form-group row">
                     <label for="correct_option" class="col-sm-2 col-form-label">Correct Option:</label>
                     <div class="col-sm-10" >
-                        <select id="subject_id" required name="subject_id" class="custom-select" autofocus>
+                        <select id="subject_id"   name="subject_id" class="custom-select" autofocus>
                             @foreach($subjects as $subject)
 
                                 <option value="{{ $subject->id }}" >{{ $subject->name }}</option>
@@ -46,25 +53,25 @@
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">A</label>
                     <div class="col-sm-10">
-                        <input type="text" required  class="form-control" name="a" id="a" placeholder="">
+                        <input type="text"    class="form-control" name="a" id="a" placeholder="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">B</label>
                     <div class="col-sm-10">
-                        <input type="text" required  class="form-control" name="b" id="b" placeholder="">
+                        <input type="text"    class="form-control" name="b" id="b" placeholder="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">C</label>
                     <div class="col-sm-10">
-                        <input type="text" required  class="form-control" name="c" id="c" placeholder="">
+                        <input type="text"    class="form-control" name="c" id="c" placeholder="">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">D</label>
                     <div class="col-sm-10">
-                        <input type="text" required  class="form-control" name="d" id="d" placeholder="">
+                        <input type="text"    class="form-control" name="d" id="d" placeholder="">
                     </div>
                 </div>
 
@@ -75,6 +82,8 @@
                             <option value="a" selected>A</option>
                             <option value="b">B</option>
                             <option value="c">C</option>
+                            <option value="c">D</option>
+
                         </select>
                     </div>
                 </div>
@@ -88,5 +97,6 @@
     </div>
 </section>
 @yield('footer')
+<script src="{{ asset('js/question/question.js') }}"></script>
 </body>
 </html>

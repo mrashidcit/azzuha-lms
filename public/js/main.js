@@ -1,5 +1,13 @@
 jQuery(function($) {'use strict',
 
+	// Setting CSRF token for Ajax
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+
+	});
+
 	//#main-slider
 	$(function(){
 		$('#main-slider.carousel').carousel({

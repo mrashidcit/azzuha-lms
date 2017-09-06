@@ -3,6 +3,8 @@
 $(document).ready(function(){
 
     $('#subject-info').hide();
+    $('#quiz-form').hide();
+
 
 
 
@@ -14,12 +16,7 @@ $(document).ready(function(){
     var currentIndex = 0;
     var currentQuestion;
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
 
-    });
 
     $('#submit').click(function(e){
 
@@ -98,6 +95,7 @@ $(document).ready(function(){
         // If we are hiding SubjectMenu
         // then we need to show SubjectInfo.
         showSubjectInfo();
+        showQuizForm();
 
     }
 
@@ -110,6 +108,10 @@ $(document).ready(function(){
         // from 0
         $('#current-question').text(currentIndex + 1);
         $('#total-questions').text(questions.length);
+    }
+
+    function showQuizForm(){
+        $('#quiz-form').show();
     }
 
     // Update other needed values after moveNext()
