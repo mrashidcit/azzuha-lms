@@ -69,14 +69,16 @@ class QuestionController extends Controller
 
         $question = $request->all();
 
+//        dd($question);
 
-        return response()->json([
-            'question' => $question
-        ])->setStatusCode(201);
+
+
 
         $question = new Question();
 
         $question->store($request);
+
+        return response('Successfully Saved!');
 
 
 

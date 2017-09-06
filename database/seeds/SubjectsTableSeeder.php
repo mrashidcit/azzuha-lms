@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SubjectsTableSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class SubjectsTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         DB::table('subjects')->insert([
-            'name' => 'Urdu',
+            'name' => 'Computer',
             'description' => 'Native language',
         ]);
 
@@ -30,7 +31,7 @@ class SubjectsTableSeeder extends Seeder
         ]);
 
         DB::table('subjects')->insert([
-            'name' => 'Computer',
+            'name' => 'Physics',
             'description' => 'Computer Fundamentals',
         ]);
 

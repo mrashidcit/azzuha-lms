@@ -14,7 +14,7 @@ class ModifyQuestionsTable extends Migration
     public function up()
     {
         Schema::table('questions', function (Blueprint $table){
-            $table->string('user_answer', 4);
+            $table->string('user_answer', 4)->nullable();
 
         });
     }
