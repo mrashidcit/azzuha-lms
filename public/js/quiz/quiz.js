@@ -2,8 +2,17 @@
 
 $(document).ready(function(){
 
-    // contains id of currently selected subject
-    var subject_id;
+    $('#subject-info').hide();
+
+
+
+    // contains info of currently selected subject
+    var currentSubject = {id: '', name: 'default' };
+    var questions = [];
+
+    var totalQuestions;
+    var currentIndex = 0;
+    var currentQuestion;
 
     $.ajaxSetup({
         headers: {
@@ -16,41 +25,98 @@ $(document).ready(function(){
 
         e.preventDefault();
 
-        subject_id = $('#subject_id  option:selected').val();
+        currentSubject.id = $('#subject_id  option:selected').val();
+        currentSubject.name = $('#subject_id  option:selected').text();
 
-        console.log('subject_id = ' + subject_id );
+        console.log(currentSubject);
+
+        console.log('subject_id = ' + currentSubject.id );
+
+        $.get("quiz/start-quiz/" + currentSubject.id , function(data, status){
+            questions = JSON.stringify(data['questions']);
+            questions = JSON.parse(questions);
+            totalQuestions = questions.length;
 
 
-        var token = $('meta[name="csrf-token"]').attr('content');
-        /*
 
-
-        $.get("quiz/start-quiz/" + 1 , function(data, status){
-            console.log(JSON.stringify(data['questions']));
+            resetCurrentIndex();
+            // console.log(questions);
+            // console.log(JSON.stringify(data['questions']));
             console.log("Status: " + status);
+
+            hideSubjectMenu();
+
+            show(questions[currentIndex++]);
         });
 
-        /*
-
-        $.get("/subjects", function(data, status){
-            console.log(JSON.stringify(data['subjects']) );
-            console.log("Status: " + status);
-
-        });
-         */
-
-
-        console.log('Token = ' + token);
-        console.log('Button Clicked');
-
-
-
-        /*
-        $.get("", function(data, status){
-            console.log(data);
-        });
-        */
     });
+
+    // Show Question in Control
+
+    function show(question){
+        currentQuestion = question;
+        $('#question').text(question.question);
+        $('#a').text(question.a);
+        $('#b').text(question.b);
+        $('#c').text(question.c);
+        $('#d').text(question.d);
+
+        console.log('show');
+        console.log("currentQuestion = " ,currentQuestion);
+
+    }
+
+    $('#next').click(function(e){
+       e.preventDefault();
+        console.log('Move next');
+        next();
+    });
+
+    // Reset currentIndex Value
+    function resetCurrentIndex(){
+        currentIndex = 0;
+        return ;
+    }
+
+
+    // Move to the Next Question
+    function next(){
+        if (!(currentIndex < questions.length)){
+            console.log('quiz completed ' + currentIndex);
+            return ;
+        }
+
+        show(questions[currentIndex++]);
+        updateOtherValues();
+
+    }
+
+    // Hide Subject Menu
+    function hideSubjectMenu(){
+        var state =  $('#select-subject').hide();
+
+        // If we are hiding SubjectMenu
+        // then we need to show SubjectInfo.
+        showSubjectInfo();
+
+    }
+
+    // Show Subject Info If Subject is selected by user
+    function showSubjectInfo(){
+        $('#subject-info').show();
+        $('#subject-name').text(currentSubject.name);
+
+        // currentIndex + 1 becuase index is starting
+        // from 0
+        $('#current-question').text(currentIndex + 1);
+        $('#total-questions').text(questions.length);
+    }
+
+    // Update other needed values after moveNext()
+    function updateOtherValues(){
+        $('#current-question').text(currentIndex);
+        $('#total-questions').text(questions.length);
+    }
 
 });
 
