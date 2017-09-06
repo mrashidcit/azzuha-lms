@@ -83,26 +83,26 @@
                                 <div class="col-sm-10">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="opt" id="" value="a" >
+                                            <input class="form-check-input" type="radio" name="option" id="option" value="a" required/>
                                             <span id="a"></span>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="opt" id="" value="b">
+                                            <input class="form-check-input" type="radio" name="option" id="option" value="b">
                                             <span id="b"></span>
 
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="opt" id="" value="c">
+                                            <input class="form-check-input" type="radio" name="option" id="option" value="c">
                                             <span id="c"></span>
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="opt" id="" value="d">
+                                            <input class="form-check-input" type="radio" name="option" id="option" value="d">
                                             <span id="d"></span>
                                         </label>
                                     </div>
@@ -112,7 +112,7 @@
 
                         <div class="form-group row">
                             <div class="col-sm-10">
-                                <button id="next" type="submit" class="btn btn-primary">
+                                <button id="save-and-next" type="submit" class="btn btn-primary">
                                     Save & Next
                                 </button>
                             </div>
