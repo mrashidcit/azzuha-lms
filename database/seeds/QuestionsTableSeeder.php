@@ -22,6 +22,8 @@ class QuestionsTableSeeder extends Seeder
 //        // Enable Foreign Key Constraint
 //        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
+        DB::table('questions')->truncate();
+
         // "Computer"
         $subject_id = 1;
 
@@ -76,7 +78,7 @@ class QuestionsTableSeeder extends Seeder
             'b' => 'Selection',
             'c' => 'Sequence',
             'd' => 'Both A&B',
-            'correct_option' => '',
+            'correct_option' => 'a',
 
         ]);
 
@@ -98,7 +100,7 @@ class QuestionsTableSeeder extends Seeder
             'b' => '4',
             'c' => '5',
             'd' => '6',
-            'correct_option' => '2',
+            'correct_option' => 'a',
 
         ]);
 
@@ -109,7 +111,7 @@ class QuestionsTableSeeder extends Seeder
             'b' => '30',
             'c' => '31',
             'd' => '32',
-            'correct_option' => '30',
+            'correct_option' => 'b',
 
         ]);
 

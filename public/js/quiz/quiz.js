@@ -35,7 +35,7 @@ $('#submit').click(function(e){
 
         hideSubjectMenu();
 
-        show(questions[currentIndex++]);
+        show(questions[currentIndex]);
     });
 
 });
@@ -57,27 +57,60 @@ function show(question){
     Save Answer and move to the net question
  */
 
+$("input[name='option']").click(function(e){
+
+    // Saving user answer
+    saveAnswer();
+    console.log('option clicked');
+});
+
+// Save user Answer
+function saveAnswer(){
+    // Selected Option
+    var selectedOption =  $("input[name='option']:checked");
+
+
+
+    if (currentIndex < totalQuestions){
+        // Storing User Answer
+        questions[currentIndex].user_answer = selectedOption.val();
+
+
+        console.log(questions[currentIndex].user_answer);
+        console.log(selectedOption.val());
+    }
+
+}
+
+// reset Selected Radio Option
+function resetRadio(){
+    var selectedOption =  $("input[name='option']:checked");
+    selectedOption.prop('checked', false);
+
+}
+
+
 $('#save-and-next').click(function(e){
     e.preventDefault();
 
-var element =  $("input[name='option']:checked");
-    
-    console.log(element.val());
-
-    $("input")
-
     console.log('Move next');
-    next();
+
+    resetRadio(); // reseting radio options
+    next(); // moving to the next question
 });
 
 // Move to the Next Question
 function next(){
+    // First move to the Index of next Question
+    currentIndex++;
+
     if (!(currentIndex < questions.length)){
-        console.log('quiz completed ' + currentIndex);
+        // Called when quiz is completed
+        quizCompleted();
         return ;
     }
 
-    show(questions[currentIndex++]);
+    show(questions[currentIndex]);
     updateOtherValues();
 
 }
@@ -85,7 +118,7 @@ function next(){
 
 // Update other needed values after moveNext()
 function updateOtherValues(){
-    $('#current-question').text(currentIndex);
+    $('#current-question').text(currentIndex + 1);
     $('#total-questions').text(questions.length);
 }
 

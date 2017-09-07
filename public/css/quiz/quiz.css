@@ -2,3 +2,7 @@
 #subject-info, #quiz {
     display: none;
 }
+
+#quiz_completed, #show-result {
+    display: none;
+}

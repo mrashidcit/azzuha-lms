@@ -2,6 +2,7 @@
 <html lang="en">
 @include('layout.internal')
 <link href="{{ asset('css/quiz/quiz.css') }}" rel="stylesheet">
+
 @yield('head')
 <body>
 @yield('header')
@@ -83,7 +84,7 @@
                                 <div class="col-sm-10">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="option" id="option" value="a" required/>
+                                            <input class="form-check-input" type="radio" name="option" id="option" value="a" />
                                             <span id="a"></span>
                                         </label>
                                     </div>
@@ -122,12 +123,44 @@
 
             </div>
 
+        <!-- This will be shown when the quiz will be completed -->
+
+        <div id="quiz_completed">
+
+            <div class="row">
+                <label for="question" class="col-sm-3 col-form-label">
+                    Total Marks: <span id="total-marks"></span>
+                </label>
+                <label for="question" class="col-sm-3 col-form-label">
+                    Obrain Marks: <span id="obtain-marks"></span>
+                </label>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2">
+                    <button id="btn-show-result"  class="btn btn-primary">
+                        Show Result
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="show-result">
+
+        </div>
+
+
 
     </div>
 </section>
 
 
 @yield('footer')
-<script src="{!! asset('js/quiz/quiz.js') !!}"></script>
+<script src="{{ asset('js/quiz/quiz.js') }}"></script>
+<script src="{{ asset('js/quiz/show-result.js') }}"></script>
+
 </body>
 </html>

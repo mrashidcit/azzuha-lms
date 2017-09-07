@@ -7,7 +7,7 @@
   <meta name="author" content="">
 
   <title>Learning Management System</title>
-  <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link href="{!! asset('css/font-awesome.min.css') !!}" rel="stylesheet">
   <link href="{!! asset('css/animate.min.css') !!}" rel="stylesheet">
   <link href="{!! asset('css/prettyPhoto.css') !!}" rel="stylesheet">
