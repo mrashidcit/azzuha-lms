@@ -55,14 +55,18 @@
 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-10">
+            <div id="question-info" class="row">
+                <div class="col-sm-4">
                     <span>
                         Question
                             <span id="current-question"></span>
                                 of
                             <span id="total-questions"></span>
                     </span>
+                </div>
+                <div class="col-sm-4">
+                    <span id="question-timer" class="badge badge-secondary">60</span>
+
                 </div>
             </div>
 
@@ -149,6 +153,8 @@
         </div>
 
         <div id="show-result">
+            <h4>Bold option: Correct Answer</h4>
+            <h4>Red Option: Your Incorrect Answer</h4>
 
         </div>
 

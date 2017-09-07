@@ -24,6 +24,7 @@ function quizCompleted(){
 
     // Hiding Quiz Form when the questions are completed
     $('#quiz').hide();
+    $('#question-info').hide();
 
     // Calculating Result
     computeResult();

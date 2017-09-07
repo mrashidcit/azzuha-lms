@@ -6,9 +6,46 @@ var totalQuestions;
 var currentIndex = 0;
 var currentQuestion;
 
+var totalQuestionTime = 3; // contain MaximumTime of the question
+
+var questionTime = totalQuestionTime; // contain question time
+
+var timer;  // contains timer object
+
 $(document).ready(function(){
 
 });
+
+
+
+
+/*
+    ************************
+    Timer related function
+ */
+
+function startTimer(){
+    timer = setInterval(updateTimer, 1000);
+}
+
+function stopTimer(){
+    clearInterval(timer);
+}
+
+function updateTimer(){
+    if (questionTime <= 0){
+        next();
+    }
+
+
+    $('#question-timer').text(questionTime--);
+
+
+}
+
+function resetQuestionTime(){
+    questionTime = totalQuestionTime;
+}
 
 $('#submit').click(function(e){
 
@@ -36,6 +73,7 @@ $('#submit').click(function(e){
         hideSubjectMenu();
 
         show(questions[currentIndex]);
+        startTimer(); // start the timer of the question
     });
 
 });
@@ -101,12 +139,14 @@ $('#save-and-next').click(function(e){
 
 // Move to the Next Question
 function next(){
+    resetQuestionTime();
     // First move to the Index of next Question
     currentIndex++;
 
     if (!(currentIndex < questions.length)){
         // Called when quiz is completed
         quizCompleted();
+        stopTimer(); // stop the timer count down
         return ;
     }
 
@@ -145,6 +185,7 @@ function hideSubjectMenu(){
 // Show Subject Info If Subject is selected by user
 function showSubjectInfo(){
     $('#subject-info').show();
+    $('#question-info').show();
     $('#subject-name').text(currentSubject.name);
 
     // currentIndex + 1 becuase index is starting
