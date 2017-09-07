@@ -49,7 +49,7 @@ class QuizController extends Controller
         $questions = Question::
             where('subject_id', '=', $subject_id)
             ->inRandomOrder()
-            ->take(3)
+            ->take(10)
             ->get();
 
         //dd($questions->all());

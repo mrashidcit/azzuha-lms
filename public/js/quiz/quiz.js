@@ -133,12 +133,13 @@ $('#save-and-next').click(function(e){
 
     console.log('Move next');
 
-    resetRadio(); // reseting radio options
+
     next(); // moving to the next question
 });
 
 // Move to the Next Question
 function next(){
+    resetRadio(); // reseting radio options
     resetQuestionTime();
     // First move to the Index of next Question
     currentIndex++;
