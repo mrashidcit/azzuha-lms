@@ -55,7 +55,7 @@
 
                 </div>
             </div>
-            <div id="question-info" class="row">
+            <div id="question-info" cla000ss="row">
                 <div class="col-sm-4">
                     <span>
                         Question

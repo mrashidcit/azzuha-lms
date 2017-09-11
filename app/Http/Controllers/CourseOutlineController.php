@@ -21,6 +21,7 @@ class CourseOutlineController extends Controller
   {
     // return $data->name;
     $corseOutline = new course_outline();
+
     $corseOutline->name = request()->name;
     $corseOutline->description = request()->description;
     $corseOutline->start_date = request()->start_date;

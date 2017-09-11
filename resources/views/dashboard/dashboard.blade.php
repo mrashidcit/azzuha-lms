@@ -13,13 +13,15 @@
   <!-- GOOGLE FONTS-->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<!-- @include('layout.internal')
-@yield('head') -->
+ {{--@include('layout.internal')--}}
+{{--@yield('head') --}}
 <body>
 
 
 
   <div id="wrapper">
+
+    <!-- /. Top Nav Bar  -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="adjust-nav">
         <div class="navbar-header">
@@ -41,7 +43,8 @@
         </span>
       </div>
     </div>
-    <!-- /. NAV TOP  -->
+
+    <!-- /. Side Nav Bar  -->
     <nav class="navbar-default navbar-side" role="navigation">
       <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
@@ -58,7 +61,9 @@
       </div>
 
     </nav>
-    <!-- /. NAV SIDE  -->
+    <!-- /. Side NAV SIDE  -->
+  </div>
+
     <div id="page-wrapper" >
       <div id="page-inner">
         <div class="row">
@@ -78,6 +83,16 @@
         </div>
         <!-- /. ROW  -->
         <div class="row text-center pad-top">
+
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+            <div class="div-square">
+              <a href="{{ route('semesters.create') }}" >
+                <i class="fa fa-male fa-5x"></i>
+                <h4>Semester</h4>
+              </a>
+            </div>
+          </div>
+
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
               <a href="{{url('create-teacher')}}" >
@@ -85,8 +100,6 @@
                 <h4>ADD New Teacher</h4>
               </a>
             </div>
-
-
           </div>
 
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
@@ -183,6 +196,9 @@
 
 
           </div>
+        </div>
+      </div>
+    </div>
           
 
   <!-- /. WRAPPER  -->

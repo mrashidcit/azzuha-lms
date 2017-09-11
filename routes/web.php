@@ -30,7 +30,8 @@ Route::get('quiz-test', function () {
 Route::get('dashboard', function () {
   $user = Auth::user();
   if ($user && $user->user_type == 1){
-    return view('dashboard.dashboard');
+        return view('admin.main');
+      //    return view('dashboard.dashboard');
   }
   else{
     return redirect('main');
@@ -131,6 +132,9 @@ Route::get('questions/questions-list', [
     'as' => 'questions.questionsListBySubjectId'
 ]);
 Route::resource('questions', 'QuestionController');
+
+// Semesters Routes
+Route::resource('semesters', 'SemesterController');
 
 // For Quiz operations
 Route::get('quiz/start-quiz/{subject_id}', [
