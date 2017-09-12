@@ -17,7 +17,7 @@ class CreateSemestersTable extends Migration
             $table->increments('id');
             $table->string('name', 8);
             $table->string('year', 5);
-            $table->boolean('active');
+            $table->boolean('status');
 
             // $table->timestamps();
         });

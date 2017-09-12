@@ -15,17 +15,13 @@
         <p style='color:red:text-align: center;'>Email "{{$error}}" is Already Exist !!</p>
       @endif
 
-<?php
-  // if(!empty($id)){
-  //   $
-  // }
- ?>
+    <?php
+      // if(!empty($id)){
+      //   $
+      // }
+     ?>
 
-
-
-
-
-      <div class="row contact-wrap">
+   <div class="row contact-wrap">
         <!-- <div class="status alert alert-success" style="display:none"></div> -->
         <form class="contact-form" name="add-student" method="post" action="/add-student" enctype="multipart/form-data">
           {!! csrf_field() !!}

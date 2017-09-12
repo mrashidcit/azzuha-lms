@@ -2,16 +2,18 @@
 <html lang="{{ app()->getLocale() }}">
 
 {{-- Head section will go here --}}
-@yield('head')
+<head>
+    @include('layouts.includes.head')
+</head>
 
 <body>
 <div id="app">
-    @yield('header')
+    @include('layouts.includes.header')
 
     @yield('content')
 </div>
 
 
-@yield('footer')
+@include('layouts.includes.footer')
 </body>
 </html>

@@ -10,7 +10,7 @@ class Semester extends Model
     protected $table = "semesters";
 
     protected  $fillable = [
-        'name', 'year', 'active'
+        'name', 'year', 'status'
     ];
 
     public $timestamps = false;

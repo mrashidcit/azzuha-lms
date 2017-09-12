@@ -50027,7 +50027,7 @@ var ReactCompositeComponent = {
     this._topLevelWrapper = null;
 
     // Delete the reference from the instance to this internal representation
-    // which allow the internals to be properly cleaned up even if the user
+    // which allow the includes to be properly cleaned up even if the user
     // leaks a reference to the public instance.
     ReactInstanceMap.remove(inst);
 
