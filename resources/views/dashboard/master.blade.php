@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-@yield('head')
-
+<head>
+    @include('dashboard.includes.head')
+</head>
+{{--@include('layout.internal')--}}
+{{--@yield('head') --}}
 <body>
 
 
 
 <div id="wrapper">
 
+    @include('dashboard.includes.header')
 
-    @yield('side-bar')
+    @include('dashboard.includes.side-bar')
+
 </div>
 
-@yield('content')
+<div id="page-wrapper" >
+    @yield('content')
+</div>
 
 
-@yield('footer')
+@include('dashboard.includes.footer')
 
 </body>
 </html>
