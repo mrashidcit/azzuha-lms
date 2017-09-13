@@ -136,6 +136,10 @@ Route::resource('questions', 'QuestionController');
 // Semesters Routes
 Route::resource('semesters', 'SemesterController');
 
+// Study Program Routes
+Route::resource('studyprograms', 'StudyProgramController');
+
+
 // For Quiz operations
 Route::get('quiz/start-quiz/{subject_id}', [
     'uses' => 'QuizController@start',

@@ -32,6 +32,15 @@
 
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="div-square">
+                    <a href="{{ route('studyprograms.create') }}" >
+                        <i class="fa fa-male fa-5x"></i>
+                        <h4>Add Study Program</h4>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                <div class="div-square">
                     <a href="{{url('create-teacher')}}" >
                         <i class="fa fa-male fa-5x"></i>
                         <h4>ADD New Teacher</h4>
