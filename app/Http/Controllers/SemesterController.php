@@ -42,29 +42,9 @@ class SemesterController extends Controller
      */
     public function store(StoreSemester $request)
     {
+        $semester = new Semester;
         
-        // Checking that Particular Semester is Already
-        // Exist or not
-        $count = Semester::where('name', $request->name)
-                    ->where('year', $request->year)->count();
-        
-        // If more than 0 then
-        // return with duplicate error message 
-        if ($count > 0){
-            return redirect()->route('semesters.create')
-            ->with('duplicate', 'Semester Already Exist in This Year!');
-
-        }
-
-        // dd($semester);
-
-        $semester = new Semester();
-
-        $semester->name = $request->name;
-        $semester->year = $request->year;
-        $semester->status = $request->status;
-
-        $semester->save();
+        $semester->store($request); 
 
         return redirect()->route('semesters.create')
             ->with('status', 'Successfully Saved!');
@@ -90,7 +70,11 @@ class SemesterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $semester = Semester::find($id);
+
+        return view('admin.semester.edit', 
+            compact('semester'));
+        // return "Edit the Semeseter";
     }
 
     /**
@@ -100,9 +84,35 @@ class SemesterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSemester $request, $id)
     {
-        //
+        $semester = Semester::find($id);
+
+        $state = $semester->isDuplicate($request);
+
+        // dd($state);
+
+        // Checking Duplication
+        if ($semester->isDuplicate($request)){
+            
+            return redirect()
+                ->route('semesters.edit', ['id' => $id])
+                ->with('duplicate' , "Semester Already Exist!");
+
+        }
+
+        // Now Updating Semester Info.
+        $semester->updateSemester($request, $id);        
+        
+
+        $success = 'Successfully Updated';
+
+        // dd($semester);
+        
+        return redirect()
+                ->route('semesters.edit', ['id' => $id])
+                ->with('success' , $success);
+             
     }
 
     /**
@@ -113,6 +123,12 @@ class SemesterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        
+        $semester = Semester::find($id);
+        $semester->delete();
+        return back()
+            ->with('success', 'Successfully Deleted!');
+        
     }
 }

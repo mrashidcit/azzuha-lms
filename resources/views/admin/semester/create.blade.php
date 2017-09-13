@@ -70,6 +70,12 @@
                             <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">
                                 Save
                             </button>
+                            <a href="{{ route('semesters.index') }}">
+                                <span class="btn btn-primary btn-lg">
+                                    Show List
+                                </span>
+                                
+                            </a>
                         </div>
                     </div>
 

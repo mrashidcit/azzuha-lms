@@ -2,25 +2,6 @@
 
 @section('content')
 
-    @php
-        $user_type = null;
-    @endphp
-
-    @auth 
-        
-        @if(Auth::user()->user_type == 1)
-            $user = 'admin';
-
-        @elseif(Auth::user()->user_type == 2)
-            $user = 'teacher'
-        @else 
-            $user = 'student'
-        @endif
-
-    @endauth
-
-
-
     <section id="contact-page">
         <div class="container">
             <div class="center">
@@ -28,9 +9,9 @@
                 <!-- <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
             </div>
 
-            @if (session('status'))
+            @if (session('success'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div>
             @endif
 
@@ -49,6 +30,10 @@
                     </ul>
                 </div>
             @endif
+
+            <div class="row">
+                <a href="{{ route('semesters.create') }}" class="custom-btn"><button name="submit" class="btn btn-primary">ADD New Semester</button></a>
+            </div>
 
             <div class="row contact-wrap">
             <table class="table table-striped">
@@ -70,13 +55,28 @@
                             @auth
                                 {{--  If user_type is 1 its means its an admin   --}}
                                 @if(Auth::user()->user_type == '1')
-                                <a href="#">
-                                    <span class="fa fa-pencil" aria-hidden="true"></span>
+                                
+
+                                <form method="post" action="{{ route('semesters.destroy', $semester->id) }}">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    
+                                    {{-- To Edit the Semester Info   --}}
+
+                                    <a href="{{ route('semesters.edit', ['id' => $semester->id])}}">
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                                    </a>
+
+                                    <a  href="{{ url('semesters/' . $semester->id) }}"> 
+                                    <button type="submit" name="submit" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></button>
                                 </a>
-                                <a href="#">
-                                    <span class="fa fa-remove" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                                </a>
+
+                                </form>
+
+
+                                {{--  onclick="return confirm('Are You Sure to Delete this Record?');"  --}}
+                                 
                             @endif
                             @endauth
                             
