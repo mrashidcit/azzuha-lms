@@ -19,7 +19,7 @@ class StudyPrograms extends Migration
             $table->string('pre_requisite', 255);
             $table->string('description', 500);
             $table->string('duration', 5); // in years
-            $table->boolean('active');
+            $table->boolean('active')->default(0);
 
         });
     }

@@ -16,7 +16,7 @@ class StudyProgram extends Model
     ];
 
 
-    protected $timestamp = false;
+    public $timestamps = false;
 
     public function Store(Request $req){
 
@@ -24,10 +24,20 @@ class StudyProgram extends Model
         $this->pre_requisite  = $req->pre_requisite;
         $this->description  = $req->description;
         $this->duration  = $req->duration ;
-        $this->action  = $req->active ;
+        // $this->action  = $req->active ;
         $this->save();
 
-        
+
+    }
+
+    public function UpdateRecord(Request $req){
+
+        $this->name = $req->name;
+        $this->pre_requisite  = $req->pre_requisite;
+        $this->description  = $req->description;
+        $this->duration  = $req->duration ;
+        // $this->action  = $req->active ;
+        $this->update();
 
     }
 

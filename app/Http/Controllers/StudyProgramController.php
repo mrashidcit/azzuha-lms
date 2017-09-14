@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\StudyProgram;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreStudyProgram;
+use App\Http\Requests\StudyProgram\StoreStudyProgram;
 
 // use App\StudyProgram;
 
@@ -17,7 +17,10 @@ class StudyProgramController extends Controller
      */
     public function index()
     {
-        //
+        $studyPrograms = StudyProgram::all();
+
+        return view('study-program.index', 
+                compact('studyPrograms'));
     }
 
     /**
@@ -37,11 +40,11 @@ class StudyProgramController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreStudyProgram $request)
     {
         $studyProgram = new StudyProgram;
 
-        dd('in store');
+        // dd('in store');
 
         $studyProgram->store($request);
 
@@ -70,7 +73,12 @@ class StudyProgramController extends Controller
      */
     public function edit($id)
     {
-        //
+        $studyProgram = StudyProgram::find($id);
+
+        
+
+        return view('study-program.edit', compact('studyProgram'));
+        
     }
 
     /**
@@ -80,9 +88,17 @@ class StudyProgramController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreStudyProgram $request, $id)
     {
-        //
+        // dd('in update');
+        $studyProgram = StudyProgram::find($id);
+
+        $studyProgram->updateRecord($request);
+
+        return back()
+            ->with('success', 'Successfully Updated!');
+
+        
     }
 
     /**
@@ -93,6 +109,9 @@ class StudyProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $studyProgram = StudyProgram::find($id);
+        $studyProgram->delete();
+        return back()
+            ->with('success', 'Successfully Deleted!');
     }
 }

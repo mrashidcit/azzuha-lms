@@ -28,7 +28,7 @@ class StoreStudyProgram extends FormRequest
             'pre_requisite' => 'required',
             'description' => 'required',
             'duration' => 'required',
-            'active' => 'required',
+            // 'active' => 'required',
             
         ];
     }
