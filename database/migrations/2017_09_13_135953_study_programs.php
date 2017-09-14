@@ -16,7 +16,7 @@ class StudyPrograms extends Migration
         Schema::create('study_programs', function(Blueprint $table){
             $table->increments('id');
             $table->string('name', 225);
-            $table->string('pre-requisite', 255);
+            $table->string('pre_requisite', 255);
             $table->string('description', 500);
             $table->string('duration', 5); // in years
             $table->boolean('active');

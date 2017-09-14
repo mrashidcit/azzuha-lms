@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\StudyProgram;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudyProgram;
+
+// use App\StudyProgram;
 
 class StudyProgramController extends Controller
 {
@@ -35,7 +39,16 @@ class StudyProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $studyProgram = new StudyProgram;
+
+        dd('in store');
+
+        $studyProgram->store($request);
+
+        return redirect()
+            ->route('studyprograms.create')
+            ->with('success', 'Successfully Saved!');
+
     }
 
     /**

@@ -9,9 +9,9 @@
                  <!-- <p class="lead">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> --> 
             </div>
 
-            @if (session('status'))
+            @if (session('success'))
                 <div class="alert alert-success">
-                    {{ session('status') }}
+                    {{ session('success') }}
                 </div>
             @endif
 
@@ -78,17 +78,17 @@
 
                 </form>  --}}
 
-                <form class="form-horizontal" action="/action_page.php">
+                <form class="form-horizontal" method="post" action="{{ route('studyprograms.store') }}">
                     <div class="form-group">
                     <label class="control-label col-sm-2" for="email">Name:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="name" name="name">
+                        <input type="text" class="form-control" autofocus id="name" name="name">
                     </div>
                     </div>
                     <div class="form-group">
                     <label class="control-label col-sm-2" for="pwd">Pre-Requisite:</label>
                     <div class="col-sm-6">          
-                        <input type="text" name="pre-requisite" class="form-control" >
+                        <input type="text" name="pre_requisite" class="form-control" >
                     </div>
                     </div>
                     <div class="form-group">
