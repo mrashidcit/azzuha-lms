@@ -1,16 +1,16 @@
 <?php
-$view = '';
+$user_type = '';
 $login = 1;
 if (Auth::user()) {   // Check is user logged in
     $user = Auth::user();
     if($user->user_type == 1){
-        $view = 'admin';
+        $user_type = 'admin';
     }
     else if($user->user_type == 2) {
-        $view = 'teacher';
+        $user_type = 'teacher';
     }
     else{
-        $view = 'student';
+        $user_type = 'student';
     }
 }
 else {
@@ -43,10 +43,10 @@ else {
                         <li><a href="#">One</a></li>
                       </ul>
                     </li> -->
-                    @if($view == 'admin')
+                    @if($user_type == 'admin')
                         <li><a href="{!! asset('dashboard') !!}">Dashboard</a></li>
                         <li><a href="{!! asset('logout') !!}">Logout</a></li>
-                    @elseif($view == 'student' || $view == 'teacher')
+                    @elseif($user_type == 'student' || $user_type == 'teacher')
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
@@ -54,6 +54,13 @@ else {
                                 <li><a href="{{ route('questions.index') }}">All Questions</a></li>
                                 <li><a href="{!! asset('view-subjects') !!}">Subjects</a></li>
                                 <li><a href="{!! asset('view-corse') !!}">Course Out Lines</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignment<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ route('assignments.create') }}">New Assignment</a></li>
+                                
                             </ul>
                         </li>
                         <li><a href="{{ route('quiz.index') }}">Quiz</a></li>

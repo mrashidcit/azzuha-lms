@@ -15,5 +15,8 @@
 
 
 @include('layouts.includes.footer')
+
+{{-- Additional Script of Individual pages   --}}
+@yield('script')
 </body>
 </html>

@@ -1,19 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
-<section id="contact-page">
-    <div class="container">
-        <div class="center">
-
-            <h2 class="custom-heading">Add New Questions</h2>
-
-
-            @if(session('success'))
-                <div id="success" class="alert alert-success">
-                    Successfully Saved!
-                </div>    
-            @endif
+    <section id="contact-page">
+        <div class="container">
+            <div class="center">
+                <h2 class="cutom-heading">Add New Assignment</h2>
+            </div>
             
         </div>
 
@@ -82,12 +74,11 @@
 
 
             </form>
+
+        
         </div>
 
-    </div>
-</section>
-@endsection
 
-@section('script')
-    <script src="{{ asset('js/question/question.js') }}"></script>    
+
+    </section>
 @endsection
