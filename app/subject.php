@@ -17,8 +17,10 @@ class subject extends Model
 
 
     public function questions(){
-        return $this->hasMany('App\Question');
+        return $this->hasMany('App\teacher_subjects', 't_id');
     }
+
+    
 
 
 }

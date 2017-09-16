@@ -62,6 +62,20 @@ class teacherSubjectController extends Controller
     public function show(teacher_subjects $teacher_subjects, $t_id)
     {
 
+        $teacher = teachers::find($t_id);
+
+        $subjects = teachers::find($t_id)->subjects;
+
+        // $subject = $teacher->subjects;
+
+        return response()
+            ->json([
+                'teacher' => $teacher,
+                'subjects' => $subjects
+            ]);
+        
+        dd($teacher->all());
+        
         $data = \DB::table('teacher_subjects')
             ->join('teachers', 'teacher_subjects.t_id', '=', 'teachers.id')
             ->join('subjects', 'teacher_subjects.s_id', '=', 'subjects.id')
