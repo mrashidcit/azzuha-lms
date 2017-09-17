@@ -64,7 +64,8 @@ class teacherSubjectController extends Controller
 
         $teacher = teachers::find($t_id);
 
-        $subjects = teachers::find($t_id)->subjects;
+        // $subjects = teachers::find($t_id)->subjects;
+        $subjects = $teacher->subjects;
 
         // $subject = $teacher->subjects;
 
