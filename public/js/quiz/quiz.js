@@ -6,7 +6,7 @@ var totalQuestions;
 var currentIndex = 0;
 var currentQuestion;
 
-var totalQuestionTime = 3; // contain MaximumTime of the question
+var totalQuestionTime = 60; // contain MaximumTime of the question
 
 var questionTime = totalQuestionTime; // contain question time
 
