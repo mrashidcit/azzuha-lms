@@ -26,6 +26,7 @@
 <?php
 $view = '';
 $login = 1;
+$user = '';
 if (Auth::user()) {   // Check is user logged in
     $user = Auth::user();
       if($user->user_type == 1){
@@ -55,6 +56,15 @@ if (Auth::user()) {   // Check is user logged in
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand"><img src="{{url('images/grey.png')}}" height="110" width="100" alt="logo"></a>
+        @if($view = 'admin')
+            <span  class="btn btn-primary btn-lg">Admin</span>    
+        @elseif($user_type = 'teacher')
+            <span  class="btn btn-primary btn-lg">Teacher</span>
+        @elseif($user_type = 'student')
+            <span  class="btn btn-primary btn-lg">Student</span>
+        
+        @endif
+
       </div>
       <div class="collapse navbar-collapse navbar-right">
         <ul class="nav navbar-nav">
@@ -70,7 +80,12 @@ if (Auth::user()) {   // Check is user logged in
           </li> -->
           @if($view == 'admin')
             <li><a href="{!! asset('dashboard') !!}">Dashboard</a></li>
-            <li><a href="{!! asset('logout') !!}">Logout</a></li>
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle " data-toggle="dropdown">{{$user->name}}<i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{!! asset('logout') !!}">Logout </a></li>
+                </ul>
+            </li>
           @elseif($view == 'student' || $view == 'teacher')
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions<i class="fa fa-angle-down"></i></a>
@@ -91,7 +106,12 @@ if (Auth::user()) {   // Check is user logged in
                 <li><a href="{!! asset('view-corse') !!}">Course Out Lines</a></li>
               </ul>
             </li>
-            <li><a href="{!! asset('logout') !!}">Logout</a></li>
+            <li class="dropdown ">
+                <a href="#" class="dropdown-toggle " data-toggle="dropdown">{{$user->name}}<i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{!! asset('logout') !!}">Logout </a></li>
+                </ul>
+            </li>
           @else
             <li><a href="{!! asset('login') !!}">Login</a></li>
           @endif

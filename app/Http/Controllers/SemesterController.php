@@ -84,17 +84,18 @@ class SemesterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreSemester $request, $id)
+    public function update(Request $request, $id)
     {
         $semester = Semester::find($id);
 
-        $state = $semester->isDuplicate($request);
+        $status = $semester->isDuplicateBeforeUpdate($request);
 
-        // dd($state);
-
+        // dd($status);
+        
         // Checking Duplication
-        if ($semester->isDuplicate($request)){
-            
+        // if status = false then this condition will be true
+        if ($status){
+
             return redirect()
                 ->route('semesters.edit', ['id' => $id])
                 ->with('duplicate' , "Semester Already Exist!");

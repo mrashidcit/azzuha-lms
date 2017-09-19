@@ -15,13 +15,17 @@ Route::get('main-test', function () {
     return view('main-test');
 });
 
+Route::get('', function () {
+  return view('index');
+});
+
 Route::get('main', function () {
   return view('index');
 });
 
-Route::get('', function () {
-    return redirect('/login');
-});
+// Route::get('', function () {
+//     return redirect('/login');
+// });
 
 Route::get('quiz-test', function () {
     return view('quiz');

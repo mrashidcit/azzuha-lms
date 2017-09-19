@@ -26,11 +26,12 @@ class Semester extends Model
         
         // If more than 0 then
         // return with duplicate error message 
-        if ($count > 0){
-            return redirect()->route('semesters.create')
-            ->with('duplicate', 'Semester Already Exist in This Year!');
+        
+        // if ($count > 1){
+        //     return redirect()->route('semesters.create')
+        //     ->with('duplicate', 'Semester Already Exist in This Year!');
 
-        }
+        // }
 
         if ($count > 0){
             return false; // means no duplicates
@@ -59,31 +60,29 @@ class Semester extends Model
 
     } // end isDuplicate()
 
-    // Checking that is there any semester
-    // already entered in the table called before Update
-    public function checkDuplicateBeforeUpdate(Request $request, $id){
+    public function isDuplicateBeforeUpdate(Request $request){
         // Checking that Particular Semester is Already
         // Exist or not
         $count = Semester::where('name', $request->name)
                     ->where('year', $request->year)->count();
         
-        // If more than 0 then
-        // return with duplicate error message 
-        if ($count > 0){
-            return redirect()->route('semesters.edit', ['id' => $id])
-            ->with('duplicate', 'Semester Already Exist!');
-
-        }
-
-        if ($count > 0){
-            return false; // means no duplicates
+        
+        // comparing with 1 because
+        // one recored is that record which we are updating
+        // if more then 1 its means another record is already
+        // exist
+        if ($count > 1){
+            return true; // means session already exist
         } 
         
-        return true; // means record already exist
+        return false; // no duplicate
         
 
-    }
+    } // end isDuplicate()
 
+    
+
+    
     // Store Semester Record in Table
     public function store(Request $request){
 
@@ -102,8 +101,6 @@ class Semester extends Model
     // Update Existing Record in Table
     public function updateSemester(Request $request, $id ){
 
-        $this->checkDuplicateBeforeUpdate($request, $id);
-        
         $this->name = $request->name;
         $this->year = $request->year;
         $this->status = $request->status;

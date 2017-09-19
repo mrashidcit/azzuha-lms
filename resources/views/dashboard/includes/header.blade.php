@@ -15,8 +15,8 @@
         </div>
 
         <span class="logout-spn" >
-      <a href="{{url('logout')}}" style="color:#fff;">LOGOUT</a>
+            <a href="{{url('logout')}}" style="color:#fff;">LOGOUT</a>
 
-    </span>
+        </span>
     </div>
 </div>

@@ -10,7 +10,7 @@ class CreateSemestersTable extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+     */u
     public function up()
     {
         Schema::create('semesters', function (Blueprint $table) {

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Teacher;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
+use App\teachers;
+use App\subject;
 
 class AssignmentController extends Controller
 {
@@ -24,7 +28,13 @@ class AssignmentController extends Controller
      */
     public function create()
     {
+        // Current Logged-In User Id
+        $teacherId = Auth::user()->id;
+        $subjects = subject::get();
+
         
+
+        dd($subjects, $teacherId);
         return view('teacher.assignment.create');
     }
 
