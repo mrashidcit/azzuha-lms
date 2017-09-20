@@ -28,11 +28,11 @@
           <div class="col-sm-5 col-sm-offset-1">
             <div class="form-group">
               <label>First Name *</label>
-              <input type="text" name="first_name" class="form-control" required="required" placeholder="Please Enter Student First Name">
+              <input type="text" id="first_name" name="first_name" class="form-control" required="required" placeholder="Please Enter Student First Name">
             </div>
             <div class="form-group">
               <label>Last Name *</label>
-              <input type="text" name="last_name" class="form-control" required="required" placeholder="Please Enter Student Last Name">
+              <input type="text" id="last_name" name="last_name" class="form-control" required="required" placeholder="Please Enter Student Last Name">
             </div>
             <div class="form-group">
               <label>Student Image </label>
@@ -65,5 +65,6 @@
     </div>
   </section>
   @yield('footer')
+  <script src={{ asset('js/validation.js') }}></script>
 </body>
 </html>
