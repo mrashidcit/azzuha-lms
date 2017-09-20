@@ -31,6 +31,14 @@ Route::get('quiz-test', function () {
     return view('quiz');
 });
 
+
+/*
+  **********************************
+          Admin Routes
+  **********************************
+  
+*/
+
 Route::get('dashboard', function () {
   $user = Auth::user();
   if ($user && $user->user_type == 1){
@@ -42,6 +50,16 @@ Route::get('dashboard', function () {
   }
 
 });
+
+Route::get('student_subjects/assign/{id}', [
+  'uses' => 'StudentSubjectController@assign',
+  'as' => 'student_subjects.assign'
+]);
+
+Route::resource('student_subjects', 'StudentSubjectController');
+
+
+
 
 Route::get('view-corse', function () {
 

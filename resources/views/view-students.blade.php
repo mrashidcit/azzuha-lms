@@ -104,7 +104,7 @@
                               <?php
                               if($view == 'admin'){
                                 ?>
-                                    <a href="{{url('assign-student-subject/'.$value->id)}}"><button class="btn-primary" style="margin-left: 585px;">Assign Subject</button></a>
+                                    <a href="{{ route('student_subjects.assign',$value->id) }}"><button class="btn-primary" style="margin-left: 585px;">Assign Subject</button></a>
                                 <?php
                                   }
                                 ?>

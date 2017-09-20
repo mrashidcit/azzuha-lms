@@ -44,6 +44,13 @@ else {
                     <li><a href="{!! asset('view-audio') !!}">Audio Lectures</a></li>
                     
                     @if($user_type == 'admin')
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assign Subjects To<i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu ">
+                                2<li><a href="{{ route('student_subjects.index') }}">Student</a></li>
+                                
+                            </ul>
+                        </li>
                         <li><a href="{!! asset('dashboard') !!}">Dashboard</a></li>
                         <li class="dropdown ">
                             <a href="#" class="dropdown-toggle btn btn-secondary" data-toggle="dropdown">{{$user->name}}<i class="fa fa-angle-down"></i></a>
